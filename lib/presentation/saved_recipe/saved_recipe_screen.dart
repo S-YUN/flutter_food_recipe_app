@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_recipe/data/model/recipe.dart';
 import 'package:food_recipe/data/repository/recipe_repository.dart';
 import 'package:food_recipe/presentation/saved_recipe/components/recipe_card.dart';
+import 'package:food_recipe/ui/color_styles.dart';
 import 'package:food_recipe/ui/size_config.dart';
 import 'package:food_recipe/ui/text_styles.dart';
 
@@ -11,22 +12,23 @@ class SavedRecipeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Center(
-          child: Text(
-            'Saved recipes',
-            style: TextStyles.mediumTextBold,
+    return Column(
+      children: [
+        AppBar(
+          scrolledUnderElevation: 0,
+          elevation: 0,
+          backgroundColor: ColorStyles.white,
+          title: Center(
+            child: Text(
+              'Saved recipes',
+              style: TextStyles.mediumTextBold,
+            ),
           ),
         ),
-      ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: getWidth(30)),
-        child: Expanded(
+        Expanded(
           child: FutureBuilder(
             future: recipeRepository.getRecipes(),
-            builder:
-                (BuildContext context, AsyncSnapshot<List<Recipe>> snapshot) {
+            builder: (BuildContext context, AsyncSnapshot<List<Recipe>> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: CircularProgressIndicator());
               } else if (snapshot.hasError) {
@@ -34,16 +36,18 @@ class SavedRecipeScreen extends StatelessWidget {
               } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
                 return const Center(child: Text('No saved recipes'));
               } else {
-                return ListView(
-                  padding: EdgeInsets.zero,
-                  children:
-                      snapshot.data!.map((e) => RecipeCard(recipe: e)).toList(),
+                return Padding(
+                  padding: EdgeInsets.symmetric(horizontal: getWidth(30)),
+                  child: ListView(
+                    padding: EdgeInsets.zero,
+                    children: snapshot.data!.map((e) => RecipeCard(recipe: e)).toList(),
+                  ),
                 );
               }
             },
           ),
         ),
-      ),
+      ],
     );
   }
 }

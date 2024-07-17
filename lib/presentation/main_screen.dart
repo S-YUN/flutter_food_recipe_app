@@ -36,11 +36,11 @@ class _MainScreenState extends State<MainScreen> {
     }
 
     return Scaffold(
+      backgroundColor: ColorStyles.white,
       body: SafeArea(child: screens[_currentIndex]),
-      bottomNavigationBar:
-          CustomBottomNavBar(currentIndex: _currentIndex, onTap: changeScreen),
+      bottomNavigationBar: CustomBottomNavBar(currentIndex: _currentIndex, onTap: changeScreen),
       floatingActionButton: FloatingActionButton(
-        shape: const CircleBorder(), // 동그란 모양 설정
+        shape: const CircleBorder(),
         backgroundColor: ColorStyles.primary100,
         onPressed: () {},
         child: SvgPicture.asset(
