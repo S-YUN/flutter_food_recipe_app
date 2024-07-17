@@ -19,26 +19,34 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
+  late List<Widget> _screens;
 
   @override
-  Widget build(BuildContext context) {
-    final List<Widget> screens = [
+  void initState() {
+    super.initState();
+    _screens = [
       const HomeScreen(),
       SavedRecipeScreen(recipeRepository: widget.recipeRepository),
       const NotificationScreen(),
       const ProfileScreen(),
     ];
+  }
 
-    void changeScreen(int index) {
-      setState(() {
-        _currentIndex = index;
-      });
-    }
+  void _changeScreen(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorStyles.white,
-      body: SafeArea(child: screens[_currentIndex]),
-      bottomNavigationBar: CustomBottomNavBar(currentIndex: _currentIndex, onTap: changeScreen),
+      body: SafeArea(child: _screens[_currentIndex]),
+      bottomNavigationBar: CustomBottomNavBar(
+        currentIndex: _currentIndex,
+        onTap: _changeScreen,
+      ),
       floatingActionButton: FloatingActionButton(
         shape: const CircleBorder(),
         backgroundColor: ColorStyles.primary100,
