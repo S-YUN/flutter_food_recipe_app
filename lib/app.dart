@@ -20,7 +20,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         primaryColor: ColorStyles.primary100,
+       
       ),
+      debugShowCheckedModeBanner: false,
       home: MainScreen(
         recipeRepository: recipeRepository,
       ),
