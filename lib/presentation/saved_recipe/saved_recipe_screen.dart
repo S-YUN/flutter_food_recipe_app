@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_recipe/data/model/recipe.dart';
 import 'package:food_recipe/data/repository/recipe_repository.dart';
-import 'package:food_recipe/presentation/saved_recipe/components/recipe_card.dart';
+import 'package:food_recipe/presentation/saved_recipe/components/saved_recipe_card.dart';
 import 'package:food_recipe/ui/color_styles.dart';
 import 'package:food_recipe/ui/size_config.dart';
 import 'package:food_recipe/ui/text_styles.dart';
@@ -40,7 +40,7 @@ class SavedRecipeScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: getWidth(30)),
                   child: ListView(
                     padding: EdgeInsets.zero,
-                    children: snapshot.data!.map((e) => RecipeCard(recipe: e)).toList(),
+                    children: snapshot.data!.map((e) => SavedRecipeCard(recipe: e)).toList(),
                   ),
                 );
               }

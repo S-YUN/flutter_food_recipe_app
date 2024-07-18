@@ -6,6 +6,7 @@ part 'recipe.g.dart';
 @freezed
 class Recipe with _$Recipe {
   factory Recipe({
+    required int id,
     required String title,
     required String chef,
     required double rating,
