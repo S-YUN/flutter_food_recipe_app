@@ -8,9 +8,9 @@ class RecipeRepositoryImpl implements RecipeRepository {
   RecipeRepositoryImpl({required RecipeApi recipeApi}) : _recipeApi = recipeApi;
 
   @override
-  Future<List<Recipe>> getRecipes() async {
+  Future<List<Recipe>> getSavedRecipes() async {
     try {
-      final data = await _recipeApi.fetchSavedRecipes();
+      final data = await _recipeApi.getSavedRecipes();
       return data;
     } catch (e) {
       throw Exception(e);

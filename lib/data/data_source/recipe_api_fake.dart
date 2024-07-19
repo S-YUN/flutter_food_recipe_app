@@ -3,7 +3,8 @@ import 'package:food_recipe/data/model/recipe.dart';
 
 class RecipeApiFake implements RecipeApi {
   @override
-  Future<List<Recipe>> fetchSavedRecipes() async {
+  Future<List<Recipe>> getSavedRecipes() async {
+    await Future.delayed( const Duration(seconds: 2));
     return [
       Recipe(
         id: 1,
