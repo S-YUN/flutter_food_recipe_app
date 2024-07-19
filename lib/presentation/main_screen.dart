@@ -10,8 +10,7 @@ import 'package:food_recipe/ui/color_styles.dart';
 import 'package:food_recipe/ui/size_config.dart';
 
 class MainScreen extends StatefulWidget {
-  final SavedRecipeScreenViewModel savedRecipeScreenViewModel;
-  const MainScreen({super.key, required this.savedRecipeScreenViewModel});
+  const MainScreen({super.key,});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -26,7 +25,7 @@ class _MainScreenState extends State<MainScreen> {
     super.initState();
     _screens = [
       const HomeScreen(),
-      SavedRecipeScreen(viewModel:widget.savedRecipeScreenViewModel),
+      const SavedRecipeScreen(),
       const NotificationScreen(),
       const ProfileScreen(),
     ];

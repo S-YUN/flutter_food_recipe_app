@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_recipe/core/change_notifier_provider.dart';
 import 'package:food_recipe/data/data_source/recipe_api_fake.dart';
 import 'package:food_recipe/data/model/recipe.dart';
 import 'package:food_recipe/data/repository/recipe_repository_impl.dart';
@@ -13,12 +14,16 @@ class Routes {
     routes: [
       GoRoute(
         path: '/',
-        builder: (BuildContext context, GoRouterState state) {
-          final recipeApi = RecipeApiFake();
-          final recipeRepository = RecipeRepositoryImpl(recipeApi: recipeApi);
-          final savedRecipeScreenViewModel = SavedRecipeScreenViewModel(recipeRepository);
-          return MainScreen(savedRecipeScreenViewModel: savedRecipeScreenViewModel);
-        },
+        builder: (BuildContext context, GoRouterState state) =>
+            // final recipeApi = RecipeApiFake();
+            // final recipeRepository = RecipeRepositoryImpl(recipeApi: recipeApi);
+            // final savedRecipeScreenViewModel = SavedRecipeScreenViewModel(recipeRepository);
+            
+            ChangeNotifierProvider<SavedRecipeScreenViewModel>(
+          value: SavedRecipeScreenViewModel(
+              RecipeRepositoryImpl(recipeApi: RecipeApiFake())),
+          child: const MainScreen(),
+        ),
       ),
       GoRoute(
         path: '/recipeDetail',

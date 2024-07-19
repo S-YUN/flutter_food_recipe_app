@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_recipe/core/change_notifier_provider.dart';
 import 'package:food_recipe/presentation/saved_recipe/components/saved_recipe_card.dart';
 import 'package:food_recipe/presentation/saved_recipe/saved_recipe_screen_view_model.dart';
 import 'package:food_recipe/ui/color_styles.dart';
@@ -6,11 +7,12 @@ import 'package:food_recipe/ui/size_config.dart';
 import 'package:food_recipe/ui/text_styles.dart';
 
 class SavedRecipeScreen extends StatelessWidget {
-  final SavedRecipeScreenViewModel viewModel;
-  const SavedRecipeScreen({super.key, required this.viewModel});
+  const SavedRecipeScreen({super.key,});
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = ChangeNotifierProvider.of<SavedRecipeScreenViewModel>(context).value;
+
     return ListenableBuilder(
       listenable: viewModel,
       builder: (BuildContext context, Widget? child) {
