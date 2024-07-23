@@ -23,7 +23,6 @@ class SavedRecipeCard extends StatelessWidget {
           hasHeroTitle: true,
           heroImageTag: 'recipeImage${recipe.id.toString()}',
           heroTitleTag: 'recipeTitle${recipe.id.toString()}',
-
         ),
       ),
     );

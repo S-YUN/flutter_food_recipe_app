@@ -1,75 +1,100 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_recipe/data/model/recipe.dart';
-import 'package:food_recipe/presentation/common_components/rectangle_recipe_card.dart';
+import 'package:food_recipe/presentation/recipe_detail/components/chef_profile.dart';
+import 'package:food_recipe/presentation/recipe_detail/components/ingredient_list_tile.dart';
+import 'package:food_recipe/presentation/recipe_detail/components/procedure_list_tile.dart';
+import 'package:food_recipe/presentation/recipe_detail/components/recipe_imgae.dart';
+import 'package:food_recipe/presentation/recipe_detail/components/recipe_title.dart';
+import 'package:food_recipe/presentation/recipe_detail/components/tab_btns.dart';
+import 'package:food_recipe/presentation/recipe_detail/components/tab_content_info.dart';
+import 'package:food_recipe/presentation/recipe_detail/recipe_detail_screen_view_model.dart';
 import 'package:food_recipe/ui/color_styles.dart';
 import 'package:food_recipe/ui/size_config.dart';
-import 'package:food_recipe/ui/text_styles.dart';
 import 'package:go_router/go_router.dart';
 
-class RecipeDetailScreen extends StatelessWidget {
+class RecipeDetailScreen extends StatefulWidget {
   final Recipe recipe;
-  const RecipeDetailScreen({super.key, required this.recipe});
+  final RecipeDetailScreenViewModel viewModel;
+  const RecipeDetailScreen(
+      {super.key, required this.recipe, required this.viewModel});
+
+  @override
+  State<RecipeDetailScreen> createState() => _RecipeDetailScreenState();
+}
+
+class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
+  @override
+  void initState() {
+    super.initState();
+    widget.viewModel
+        .fetchAllData(recipeId: widget.recipe.id, chefName: widget.recipe.chef);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    widget.viewModel.dispose(); //이걸 해주는게 맞는지?
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              context.pop();
-            },
-            icon: SvgPicture.asset('assets/icons/arrow_left.svg')),
-        actions: [
-          IconButton(
-              onPressed: () {}, icon: SvgPicture.asset('assets/icons/more.svg'))
-        ],
-      ),
-      body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: getWidth(30)),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              RectangleRecipeCard(
-                recipe: recipe,
-                hasTitle: false,
-                hasChefName: false,
-                hasHeroImage: true,
-                heroImageTag: 'recipeImage${recipe.id.toString()}',
-              ),
-              SizedBox(height: getHeight(10)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  showHeroTitle(),
-                  reviewText()
-                ],
-              )
-            ],
-          )),
-    );
-  }
-
-  Widget showHeroTitle() {
-    return Hero(
-      tag: 'recipeTitle${recipe.id.toString()}',
-      child: Material(
-        color: Colors.transparent,
-        child: SizedBox(
-          width: getWidth(194),
-          height: getHeight(41),
-          child: Text(
-            recipe.title,
-            style: TextStyles.boldStyle(getHeight(14), ColorStyles.black),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget reviewText() {
-    return Text('(13k Reviews)',
-        style: TextStyles.regularStyle(getHeight(14), ColorStyles.gray3));
+    return ListenableBuilder(
+        listenable: widget.viewModel,
+        builder: (BuildContext context, Widget? child) {
+          return Scaffold(
+            backgroundColor: ColorStyles.white,
+            appBar: AppBar(
+              backgroundColor: ColorStyles.white,
+              leading: IconButton(
+                  padding: EdgeInsets.only(left: getWidth(30)),
+                  onPressed: () {
+                    context.pop();
+                  },
+                  icon: SvgPicture.asset('assets/icons/arrow_left.svg')),
+              actions: [
+                IconButton(
+                    padding: EdgeInsets.only(right: getWidth(30)),
+                    onPressed: () {},
+                    icon: SvgPicture.asset('assets/icons/more.svg'))
+              ],
+            ),
+            body: Padding(
+                padding: EdgeInsets.symmetric(horizontal: getWidth(30)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    RecipeImgae(recipe: widget.recipe),
+                    SizedBox(height: getHeight(10)),
+                    RecipeTitle(recipe: widget.recipe),
+                    ChefProfile(
+                      viewModel: widget.viewModel,
+                    ),
+                    TabBtns(viewModel: widget.viewModel),
+                    TabContentInfo(viewModel: widget.viewModel),
+                    (widget.viewModel.tabType ==
+                            RecipeDetailInnerTabType.ingredient)
+                        ? Expanded(
+                            child: ListView(
+                              padding: EdgeInsets.zero,
+                              children: widget.viewModel.ingredients
+                                  .map((ingredient) => IngredientListTile(
+                                      ingredient: ingredient))
+                                  .toList(),
+                            ),
+                          )
+                        : Expanded(
+                            child: ListView(
+                              padding: EdgeInsets.zero,
+                              children: widget.viewModel.procedures
+                                  .map((procedure) =>
+                                      ProcedureListTile(procedure: procedure))
+                                  .toList(),
+                            ),
+                          ),
+                  ],
+                )),
+          );
+        });
   }
 }
