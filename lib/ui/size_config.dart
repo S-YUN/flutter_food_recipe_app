@@ -5,6 +5,8 @@ class SizeConfig {
   static double? width;
   static double? height;
   static Orientation? orientation;
+  static const double designWidth = 375.0;
+  static const double designHeight = 812.0;
 
   void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
@@ -16,12 +18,23 @@ class SizeConfig {
 
 // 세로 비율에 따른 높이
 double getHeight(double inputHeight) {
-  double screenHeight = SizeConfig.height!;
-  return (inputHeight / 812.0) * screenHeight;
+  double screenHeightPortrait =
+      (inputHeight / SizeConfig.designHeight) * SizeConfig.height!;
+  double screenHeightLandscape =
+      (inputHeight / SizeConfig.designWidth) * SizeConfig.width!;
+
+  return SizeConfig.orientation == Orientation.portrait
+      ? screenHeightPortrait
+      : screenHeightLandscape;
 }
 
 // 가로 비율에 따른 너비
 double getWidth(double inputWidth) {
-  double screenWidth = SizeConfig.width!;
-  return (inputWidth / 375.0) * screenWidth;
+  double screenWidthPortrait =
+      (inputWidth / SizeConfig.designWidth) * SizeConfig.width!;
+  double screenWidthLandscape =
+      (inputWidth / SizeConfig.designWidth) * SizeConfig.height!;
+  return SizeConfig.orientation == Orientation.portrait
+      ? screenWidthPortrait
+      : screenWidthLandscape;
 }
