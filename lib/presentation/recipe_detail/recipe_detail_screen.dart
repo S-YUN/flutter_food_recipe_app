@@ -32,12 +32,6 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
   }
 
   @override
-  void dispose() {
-    super.dispose();
-    widget.viewModel.dispose(); //이걸 해주는게 맞는지?
-  }
-
-  @override
   Widget build(BuildContext context) {
     return ListenableBuilder(
         listenable: widget.viewModel,
