@@ -10,6 +10,7 @@ import 'package:food_recipe/presentation/recipe_detail/recipe_detail_screen.dart
 import 'package:food_recipe/presentation/recipe_detail/recipe_detail_screen_view_model.dart';
 import 'package:food_recipe/presentation/splash/splash_screen.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class Routes {
   static final GoRouter router = GoRouter(
@@ -34,13 +35,15 @@ class Routes {
           final procedureRepository =
               ProcedureRepositoryImpl(recipeApi: recipeApi);
           final chefRepository = ChefRepositoryImpl(chefApi: chefApi);
-          final recipeDetailScreenViewModel = RecipeDetailScreenViewModel(
-              ingredientRepository: ingredientRepository,
-              procedureRepository: procedureRepository,
-              chefRepository: chefRepository);
-          return RecipeDetailScreen(
-            recipe: recipe,
-            viewModel: recipeDetailScreenViewModel,
+
+          return ChangeNotifierProvider(
+            create: (context) => RecipeDetailScreenViewModel(
+                ingredientRepository: ingredientRepository,
+                procedureRepository: procedureRepository,
+                chefRepository: chefRepository),
+            child: RecipeDetailScreen(
+              recipe: recipe,
+            ),
           );
         },
       ),

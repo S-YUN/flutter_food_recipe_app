@@ -4,8 +4,10 @@ import 'package:food_recipe/ui/color_styles.dart';
 import 'package:food_recipe/ui/size_config.dart';
 
 class TabBtns extends StatelessWidget {
-  final RecipeDetailScreenViewModel viewModel;
-  const TabBtns({super.key, required this.viewModel});
+  final RecipeDetailInnerTabType tabType;
+  final void Function(RecipeDetailInnerTabType type) changeTap;
+
+  const TabBtns({super.key, required this.tabType, required this.changeTap});
 
   @override
   Widget build(BuildContext context) {
@@ -13,18 +15,14 @@ class TabBtns extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         TextButton(
-          onPressed: () {
-            viewModel.changeTabType(RecipeDetailInnerTabType.ingredient);
-          },
+          onPressed: () => changeTap(RecipeDetailInnerTabType.ingredient),
           style: TextButton.styleFrom(
-            foregroundColor:
-                (viewModel.tabType == RecipeDetailInnerTabType.ingredient)
-                    ? ColorStyles.white
-                    : ColorStyles.primary100,
-            backgroundColor:
-                (viewModel.tabType == RecipeDetailInnerTabType.ingredient)
-                    ? ColorStyles.primary100
-                    : ColorStyles.white,
+            foregroundColor: (tabType == RecipeDetailInnerTabType.ingredient)
+                ? ColorStyles.white
+                : ColorStyles.primary100,
+            backgroundColor: (tabType == RecipeDetailInnerTabType.ingredient)
+                ? ColorStyles.primary100
+                : ColorStyles.white,
             minimumSize: Size(
               getWidth(150),
               getHeight(33),
@@ -40,17 +38,15 @@ class TabBtns extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            viewModel.changeTabType(RecipeDetailInnerTabType.procedure);
+            changeTap(RecipeDetailInnerTabType.procedure);
           },
           style: TextButton.styleFrom(
-            foregroundColor:
-                (viewModel.tabType == RecipeDetailInnerTabType.procedure)
-                    ? ColorStyles.white
-                    : ColorStyles.primary100,
-            backgroundColor:
-                (viewModel.tabType == RecipeDetailInnerTabType.procedure)
-                    ? ColorStyles.primary100
-                    : ColorStyles.white,
+            foregroundColor: (tabType == RecipeDetailInnerTabType.procedure)
+                ? ColorStyles.white
+                : ColorStyles.primary100,
+            backgroundColor: (tabType == RecipeDetailInnerTabType.procedure)
+                ? ColorStyles.primary100
+                : ColorStyles.white,
             minimumSize: Size(
               getWidth(150),
               getHeight(33),

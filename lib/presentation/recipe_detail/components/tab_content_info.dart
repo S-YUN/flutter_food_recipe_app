@@ -6,8 +6,10 @@ import 'package:food_recipe/ui/size_config.dart';
 import 'package:food_recipe/ui/text_styles.dart';
 
 class TabContentInfo extends StatelessWidget {
-  final RecipeDetailScreenViewModel viewModel;
-  const TabContentInfo({super.key, required this.viewModel});
+  final RecipeDetailInnerTabType tabType;
+  final int ingredientLength;
+  final int procedureLength;
+  const TabContentInfo({super.key, required this.tabType,required this.ingredientLength, required this.procedureLength});
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +34,9 @@ class TabContentInfo extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            (viewModel.tabType == RecipeDetailInnerTabType.ingredient)
-                ? '${viewModel.ingredients.length} Items'
-                : '${viewModel.procedures.length} Steps',
+            (tabType == RecipeDetailInnerTabType.ingredient)
+                ? '$ingredientLength Items'
+                : '$procedureLength Steps',
             style: TextStyles.regularStyle(getHeight(11), ColorStyles.gray3),
           )
         ],

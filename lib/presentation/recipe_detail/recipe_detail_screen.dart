@@ -12,12 +12,11 @@ import 'package:food_recipe/presentation/recipe_detail/recipe_detail_screen_view
 import 'package:food_recipe/ui/color_styles.dart';
 import 'package:food_recipe/ui/size_config.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class RecipeDetailScreen extends StatefulWidget {
   final Recipe recipe;
-  final RecipeDetailScreenViewModel viewModel;
-  const RecipeDetailScreen(
-      {super.key, required this.recipe, required this.viewModel});
+  const RecipeDetailScreen({super.key, required this.recipe});
 
   @override
   State<RecipeDetailScreen> createState() => _RecipeDetailScreenState();
@@ -27,68 +26,74 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
   @override
   void initState() {
     super.initState();
-    widget.viewModel
-        .fetchAllData(recipeId: widget.recipe.id, chefName: widget.recipe.chef);
+    Future.microtask(() {
+      final viewModel = context.read<RecipeDetailScreenViewModel>();
+      viewModel.fetchAllData(
+          recipeId: widget.recipe.id, chefName: widget.recipe.chef);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return ListenableBuilder(
-        listenable: widget.viewModel,
-        builder: (BuildContext context, Widget? child) {
-          return Scaffold(
-            backgroundColor: ColorStyles.white,
-            appBar: AppBar(
-              backgroundColor: ColorStyles.white,
-              leading: IconButton(
-                  padding: EdgeInsets.only(left: getWidth(30)),
-                  onPressed: () {
-                    context.pop();
-                  },
-                  icon: SvgPicture.asset('assets/icons/arrow_left.svg')),
-              actions: [
-                IconButton(
-                    padding: EdgeInsets.only(right: getWidth(30)),
-                    onPressed: () {},
-                    icon: SvgPicture.asset('assets/icons/more.svg'))
-              ],
-            ),
-            body: Padding(
-                padding: EdgeInsets.symmetric(horizontal: getWidth(30)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    RecipeImgae(recipe: widget.recipe),
-                    SizedBox(height: getHeight(10)),
-                    RecipeTitle(recipe: widget.recipe),
-                    ChefProfile(
-                      viewModel: widget.viewModel,
+    final viewModel = context.watch<RecipeDetailScreenViewModel>();
+    return Scaffold(
+      backgroundColor: ColorStyles.white,
+      appBar: AppBar(
+        backgroundColor: ColorStyles.white,
+        leading: IconButton(
+            padding: EdgeInsets.only(left: getWidth(30)),
+            onPressed: () {
+              context.pop();
+            },
+            icon: SvgPicture.asset('assets/icons/arrow_left.svg')),
+        actions: [
+          IconButton(
+              padding: EdgeInsets.only(right: getWidth(30)),
+              onPressed: () {},
+              icon: SvgPicture.asset('assets/icons/more.svg'))
+        ],
+      ),
+      body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: getWidth(30)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              RecipeImgae(recipe: widget.recipe),
+              SizedBox(height: getHeight(10)),
+              RecipeTitle(recipe: widget.recipe),
+              ChefProfile(
+                chefInfo: viewModel.chefInfo,
+              ),
+              TabBtns(
+                tabType: viewModel.tabType,
+                changeTap: viewModel.changeTabType,
+              ),
+              TabContentInfo(
+                tabType: viewModel.tabType,
+                ingredientLength: viewModel.ingredients.length,
+                procedureLength: viewModel.procedures.length,
+              ),
+              (viewModel.tabType == RecipeDetailInnerTabType.ingredient)
+                  ? Expanded(
+                      child: ListView(
+                        padding: EdgeInsets.zero,
+                        children: viewModel.ingredients
+                            .map((ingredient) =>
+                                IngredientListTile(ingredient: ingredient))
+                            .toList(),
+                      ),
+                    )
+                  : Expanded(
+                      child: ListView(
+                        padding: EdgeInsets.zero,
+                        children: viewModel.procedures
+                            .map((procedure) =>
+                                ProcedureListTile(procedure: procedure))
+                            .toList(),
+                      ),
                     ),
-                    TabBtns(viewModel: widget.viewModel),
-                    TabContentInfo(viewModel: widget.viewModel),
-                    (widget.viewModel.tabType ==
-                            RecipeDetailInnerTabType.ingredient)
-                        ? Expanded(
-                            child: ListView(
-                              padding: EdgeInsets.zero,
-                              children: widget.viewModel.ingredients
-                                  .map((ingredient) => IngredientListTile(
-                                      ingredient: ingredient))
-                                  .toList(),
-                            ),
-                          )
-                        : Expanded(
-                            child: ListView(
-                              padding: EdgeInsets.zero,
-                              children: widget.viewModel.procedures
-                                  .map((procedure) =>
-                                      ProcedureListTile(procedure: procedure))
-                                  .toList(),
-                            ),
-                          ),
-                  ],
-                )),
-          );
-        });
+            ],
+          )),
+    );
   }
 }

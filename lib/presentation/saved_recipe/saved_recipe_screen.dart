@@ -1,49 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:food_recipe/core/change_notifier_provider.dart';
 import 'package:food_recipe/presentation/saved_recipe/components/saved_recipe_card.dart';
 import 'package:food_recipe/presentation/saved_recipe/saved_recipe_screen_view_model.dart';
 import 'package:food_recipe/ui/color_styles.dart';
 import 'package:food_recipe/ui/size_config.dart';
 import 'package:food_recipe/ui/text_styles.dart';
+import 'package:provider/provider.dart';
 
 class SavedRecipeScreen extends StatelessWidget {
-  const SavedRecipeScreen({super.key,});
+  const SavedRecipeScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = ChangeNotifierProvider.of<SavedRecipeScreenViewModel>(context).value;
-
-    return ListenableBuilder(
-      listenable: viewModel,
-      builder: (BuildContext context, Widget? child) {
-        return (viewModel.isLoading)
-            ? const Center(child:  CircularProgressIndicator())
-            : Column(
-                children: [
-                  AppBar(
-                    scrolledUnderElevation: 0,
-                    elevation: 0,
-                    backgroundColor: ColorStyles.white,
-                    title: Center(
-                      child: Text(
-                        'Saved recipes',
-                        style: TextStyles.mediumTextBold,
-                      ),
-                    ),
+    final viewModel = context.watch<SavedRecipeScreenViewModel>();
+    return (viewModel.isLoading)
+        ? const Center(child: CircularProgressIndicator())
+        : Column(
+            children: [
+              AppBar(
+                scrolledUnderElevation: 0,
+                elevation: 0,
+                backgroundColor: ColorStyles.white,
+                title: Center(
+                  child: Text(
+                    'Saved recipes',
+                    style: TextStyles.mediumTextBold,
                   ),
-                  Expanded(
-                      child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: getWidth(30)),
-                    child: ListView(
-                      padding: EdgeInsets.zero,
-                      children: viewModel.savedRecipes
-                          .map((recipe) => SavedRecipeCard(recipe: recipe))
-                          .toList(),
-                    ),
-                  )),
-                ],
-              );
-      },
-    );
+                ),
+              ),
+              Expanded(
+                  child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: getWidth(30)),
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  children: viewModel.savedRecipes
+                      .map((recipe) => SavedRecipeCard(recipe: recipe))
+                      .toList(),
+                ),
+              )),
+            ],
+          );
   }
 }
