@@ -62,22 +62,22 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
               SizedBox(height: getHeight(10)),
               RecipeTitle(recipe: widget.recipe),
               ChefProfile(
-                chefInfo: viewModel.chefInfo,
+                chefInfo: viewModel.state.chefInfo,
               ),
               TabBtns(
-                tabType: viewModel.tabType,
+                tabType: viewModel.state.tabType,
                 changeTap: viewModel.changeTabType,
               ),
               TabContentInfo(
-                tabType: viewModel.tabType,
-                ingredientLength: viewModel.ingredients.length,
-                procedureLength: viewModel.procedures.length,
+                tabType: viewModel.state.tabType,
+                ingredientLength: viewModel.state.ingredients.length,
+                procedureLength: viewModel.state.procedures.length,
               ),
-              (viewModel.tabType == RecipeDetailInnerTabType.ingredient)
+              (viewModel.state.tabType == RecipeDetailInnerTabType.ingredient)
                   ? Expanded(
                       child: ListView(
                         padding: EdgeInsets.zero,
-                        children: viewModel.ingredients
+                        children: viewModel.state.ingredients
                             .map((ingredient) =>
                                 IngredientListTile(ingredient: ingredient))
                             .toList(),
@@ -86,7 +86,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                   : Expanded(
                       child: ListView(
                         padding: EdgeInsets.zero,
-                        children: viewModel.procedures
+                        children: viewModel.state.procedures
                             .map((procedure) =>
                                 ProcedureListTile(procedure: procedure))
                             .toList(),
