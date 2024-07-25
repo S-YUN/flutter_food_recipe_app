@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_recipe/data/model/recipe.dart';
 import 'package:food_recipe/data/repository/recipe/recipe_repository.dart';
+import 'package:food_recipe/presentation/saved_recipe/saved_recipe_screen_ui_state.dart';
 
 class SavedRecipeScreenViewModel with ChangeNotifier {
   final RecipeRepository _recipeRepository;
@@ -8,17 +8,15 @@ class SavedRecipeScreenViewModel with ChangeNotifier {
   SavedRecipeScreenViewModel(this._recipeRepository) {
     fetchSavedRecipes();
   }
-  List<Recipe> _savedRecipes = [];
-  List<Recipe> get savedRecipes => _savedRecipes;
-
-  bool _isLoading = false;
-  bool get isLoading => _isLoading;
+  SavedRecipeScreenUiState _state = const SavedRecipeScreenUiState();
+  SavedRecipeScreenUiState get state => _state;
 
   void fetchSavedRecipes() async {
-    _isLoading = true;
+    _state = state.copyWith(isLoading: true);
     notifyListeners();
-    _savedRecipes = await _recipeRepository.getSavedRecipes();
-    _isLoading = false;
+    _state = state.copyWith(
+        savedRecipes: await _recipeRepository.getSavedRecipes(),
+        isLoading: false);
     notifyListeners();
   }
 }

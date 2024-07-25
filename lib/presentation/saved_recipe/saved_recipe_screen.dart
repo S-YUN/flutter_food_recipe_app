@@ -14,7 +14,7 @@ class SavedRecipeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<SavedRecipeScreenViewModel>();
-    return (viewModel.isLoading)
+    return (viewModel.state.isLoading)
         ? const Center(child: CircularProgressIndicator())
         : Column(
             children: [
@@ -34,7 +34,7 @@ class SavedRecipeScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: getWidth(30)),
                 child: ListView(
                   padding: EdgeInsets.zero,
-                  children: viewModel.savedRecipes
+                  children: viewModel.state.savedRecipes
                       .map((recipe) => SavedRecipeCard(recipe: recipe))
                       .toList(),
                 ),
