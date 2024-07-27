@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:food_recipe/data/model/recipe.dart';
+import 'package:food_recipe/domain/model/recipe.dart';
 import 'package:food_recipe/presentation/recipe_detail/components/chef_profile.dart';
 import 'package:food_recipe/presentation/recipe_detail/components/ingredient_list_tile.dart';
 import 'package:food_recipe/presentation/recipe_detail/components/procedure_list_tile.dart';

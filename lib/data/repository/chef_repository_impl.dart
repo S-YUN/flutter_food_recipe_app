@@ -1,6 +1,6 @@
 import 'package:food_recipe/data/data_source/chef/chef_api.dart';
-import 'package:food_recipe/data/model/chef.dart';
-import 'package:food_recipe/data/repository/chef/chef_repository.dart';
+import 'package:food_recipe/domain/model/chef.dart';
+import 'package:food_recipe/domain/repository/chef_repository.dart';
 
 class ChefRepositoryImpl implements ChefRepository {
   final ChefApi _chefApi;

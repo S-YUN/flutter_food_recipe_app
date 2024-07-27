@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_recipe/data/repository/chef/chef_repository.dart';
-import 'package:food_recipe/data/repository/ingredient/ingredient_repository.dart';
-import 'package:food_recipe/data/repository/procedure/procedure_repository.dart';
+import 'package:food_recipe/domain/repository/chef_repository.dart';
+import 'package:food_recipe/domain/repository/ingredient_repository.dart';
+import 'package:food_recipe/domain/repository/procedure_repository.dart';
 import 'package:food_recipe/presentation/recipe_detail/recipe_detail_screen_ui_state.dart';
 
 class RecipeDetailScreenViewModel with ChangeNotifier {

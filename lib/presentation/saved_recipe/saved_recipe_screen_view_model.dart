@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_recipe/data/repository/recipe/recipe_repository.dart';
+import 'package:food_recipe/domain/repository/recipe_repository.dart';
 import 'package:food_recipe/presentation/saved_recipe/saved_recipe_screen_ui_state.dart';
 
 class SavedRecipeScreenViewModel with ChangeNotifier {

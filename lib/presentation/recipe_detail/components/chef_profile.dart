@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:food_recipe/data/model/chef.dart';
+import 'package:food_recipe/domain/model/chef.dart';
 import 'package:food_recipe/presentation/common_components/default_btn.dart';
 import 'package:food_recipe/ui/color_styles.dart';
 import 'package:food_recipe/ui/size_config.dart';

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:food_recipe/data/data_source/chef/chef_api_fake.dart';
 import 'package:food_recipe/data/data_source/recipe/recipe_api_fake.dart';
-import 'package:food_recipe/data/model/recipe.dart';
-import 'package:food_recipe/data/repository/chef/chef_repository_impl.dart';
-import 'package:food_recipe/data/repository/ingredient/ingredient_repository_impl.dart';
-import 'package:food_recipe/data/repository/procedure/procedure_repository_impl.dart';
+import 'package:food_recipe/domain/model/recipe.dart';
+import 'package:food_recipe/data/repository/chef_repository_impl.dart';
+import 'package:food_recipe/data/repository/ingredient_repository_impl.dart';
+import 'package:food_recipe/data/repository/procedure_repository_impl.dart';
 import 'package:food_recipe/presentation/main_screen.dart';
 import 'package:food_recipe/presentation/recipe_detail/recipe_detail_screen.dart';
 import 'package:food_recipe/presentation/recipe_detail/recipe_detail_screen_view_model.dart';

@@ -1,6 +1,6 @@
 import 'package:food_recipe/data/data_source/recipe/recipe_api.dart';
-import 'package:food_recipe/data/model/ingredient.dart';
-import 'package:food_recipe/data/repository/ingredient/ingredient_repository.dart';
+import 'package:food_recipe/domain/model/ingredient.dart';
+import 'package:food_recipe/domain/repository/ingredient_repository.dart';
 
 class IngredientRepositoryImpl implements IngredientRepository {
   final RecipeApi _recipeApi;

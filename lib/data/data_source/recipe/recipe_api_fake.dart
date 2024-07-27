@@ -1,7 +1,7 @@
 import 'package:food_recipe/data/data_source/recipe/recipe_api.dart';
-import 'package:food_recipe/data/model/ingredient.dart';
-import 'package:food_recipe/data/model/procedure.dart';
-import 'package:food_recipe/data/model/recipe.dart';
+import 'package:food_recipe/domain/model/ingredient.dart';
+import 'package:food_recipe/domain/model/procedure.dart';
+import 'package:food_recipe/domain/model/recipe.dart';
 
 class RecipeApiFake implements RecipeApi {
   @override
