@@ -6,10 +6,13 @@ import 'package:food_recipe/data/repository/chef_repository_impl.dart';
 import 'package:food_recipe/data/repository/ingredient_repository_impl.dart';
 import 'package:food_recipe/data/repository/procedure_repository_impl.dart';
 import 'package:food_recipe/data/repository/recipe_repository_impl.dart';
+import 'package:food_recipe/data/repository/user_repository_impl.dart';
 import 'package:food_recipe/domain/repository/chef_repository.dart';
 import 'package:food_recipe/domain/repository/ingredient_repository.dart';
 import 'package:food_recipe/domain/repository/procedure_repository.dart';
 import 'package:food_recipe/domain/repository/recipe_repository.dart';
+import 'package:food_recipe/domain/repository/user_repository.dart';
+import 'package:food_recipe/presentation/home/home_screen_view_model.dart';
 import 'package:food_recipe/presentation/main/main_screen_view_model.dart';
 import 'package:food_recipe/presentation/recipe_detail/recipe_detail_screen_view_model.dart';
 import 'package:food_recipe/presentation/saved_recipe/saved_recipe_screen_view_model.dart';
@@ -30,6 +33,7 @@ void diSetup() {
       ProcedureRepositoryImpl(recipeApi: getIt()));
   getIt.registerSingleton<RecipeRepository>(
       RecipeRepositoryImpl(recipeApi: getIt()));
+  getIt.registerSingleton<UserRepository>(UserRepositoryImpl());
 
   //viewmodel -> factory
   getIt.registerFactory(() => RecipeDetailScreenViewModel(
@@ -41,4 +45,5 @@ void diSetup() {
         getIt(),
       ));
   getIt.registerFactory(() => MainScreenViewModel());
+  getIt.registerFactory(() => HomeScreenViewModel(getIt()));
 }
