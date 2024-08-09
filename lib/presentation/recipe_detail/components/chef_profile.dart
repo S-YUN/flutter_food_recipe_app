@@ -15,7 +15,9 @@ class ChefProfile extends StatelessWidget {
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(horizontal: 0),
       leading: CircleAvatar(
-        backgroundImage: NetworkImage(chefInfo.imageUrl),
+        backgroundImage: (chefInfo.imageUrl.isEmpty)
+            ? const AssetImage('assets/images/profile_default.png')
+            : NetworkImage(chefInfo.imageUrl),
       ),
       title: Text(
         chefInfo.name,

@@ -16,7 +16,7 @@ class RecipeApiFake implements RecipeApi {
         cookingTime: 20,
         isFavorite: true,
         imgUrl:
-            'https://s3-alpha-sig.figma.com/img/2234/134e/6e53ef9148ab9085bbd1369e270f0bba?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=LyANfzjdS5Xbm-AZrc65fZVi0sr1C-5gCnOOWnhXZN7sYpxwvQvzQEzIJrWHOysWtgD53uE1BymNR63QCvw~bxsU4GxFyk4xtTTg3Ctkvm2HllUF4Jvi~2p4FTUWKHnXwPZ3Is5XBw4uM5setFUWSyHGTTyHc9xRGYHBqreZn5~wLDd4KsuUTQJBbKlsEsTtESQ5vpZa4HgUnSXM-Bpuvcy8ydRFlEXhoaGPA16DfdOY0ofith6FEO~baORgRP~WT4K5t9m1xzi69LZGYec-w35X~XYjLFQZPpzEv0TFTglKdIt9xqb8cc92no1yvDeVCBI-eZoDQpjcSoO1k5qa4w__',
+            'https://s3-alpha-sig.figma.com/img/2234/134e/6e53ef9148ab9085bbd1369e270f0bba?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=NXLmcOJmJIkwLgY-cCwxY8hG4wfSPa08~staTxuqKLndPSCPdStKxNLuhU7axr3X8fs-hCujha2ztr~Kha-u2RygjMzgEpin4P78XMTMCp2V6na4-8n4gm3OGen5PwI8s9EDMrYP49SHrQOb6KUl69f9xfdIzBylYiMaModLJoKQc87jZRc4tsCcxVObtes6VU5khRq2EaoYcSYIr25cXVaVmAEjYItnNyug0bO0XQL4dOlU0dHQJCt7U7zcngCGEYwKapn5xL7pjB0ItFjiiQj7dobH6ajgLRtR8qfv~CcaGHdrB9qPQgCcDZ0Q9g-MRqzJZKyjMhyoHGIS4dblEQ__',
       ),
       Recipe(
         id: 2,
@@ -26,7 +26,7 @@ class RecipeApiFake implements RecipeApi {
         cookingTime: 20,
         isFavorite: true,
         imgUrl:
-            'https://s3-alpha-sig.figma.com/img/94a5/dab4/32e7c160269453dc8f5072b693f1d1d3?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=N7~k2ufuxoMbAseI2ChdCKnFpdIF53pQbI5rJpsG3e07burm8tYvHTmRsuHDXo62GlFvTZm~RhMU~3zrMTaHl1wMfK6bT885fteojOzulyd~Dp6SCiK-vOlWHftGwT7SfirxF2NlIUaBPWzn1OE8Zp0zCWLyk8pnM4gmXjptrTyBaXQHCK5e8XXkBbCVWIRCkcYsovbGAEgK9oZ4riiF69ykL4FC~AYP65XANIgQZN2TrkTwMP6qDTUQI2dKaaGTpsK3SZrAeSkQfVOd4M3cnKPQrLEc4id-Kl45BmqJPRfayvYEvxnVm1cm1Cm-qHuTLClz1L608Y4QZkmLn0HxVg__',
+            'https://s3-alpha-sig.figma.com/img/94a5/dab4/32e7c160269453dc8f5072b693f1d1d3?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=QL0AFFQy7o0vnsnuGBHeVL6vywekBpE7xRRLNXH2z0xJAGCuJghrSmdB73T5MD5DTiUL~0Go0KAURadRd6cq8DMculfeQDEh2me6SBuOXMNyLgYrx0XyywpGfJxtQid1ZtKphoTvxgYZegpBEq1l2BN-iahNh3GcuGsG9ECo4oA~oJAlTKVfEuRqhz5BcCLDTv2SntG-3KNoaerLdFPcov-euHoosMy0S9ZHbVjc2fummRg~Ynrn1b~fS7Ygj2LvKSZZvq9bJmv8Yhq2FUfrsZ2vUfUJpC4HhWYQl~PDzIkwPBXeg5qkWKx1vOM75BFaaj5W8kEJxxHjTXqD92pxjA__',
       ),
       Recipe(
         id: 3,
@@ -36,7 +36,7 @@ class RecipeApiFake implements RecipeApi {
         cookingTime: 20,
         isFavorite: true,
         imgUrl:
-            'https://s3-alpha-sig.figma.com/img/2fcb/d544/559e1d3d17f51640b7e705c80290a38e?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=dXqVpj~Mi5~XmAg4yyrlspy-84zrTZGIAQ2ZSy~lO0ewSCw1KlzykvxBnOpu9X7oUmYYuLFAmw0u1pFr~ky2oJgJBEGjKQM-w6JUaqvv3-6BkTr1~LKHeYl37ZBBWkFt9tPFpg39QmZ8ATwJqd37cxIYxeOYlLgdUSyq~-aJzkMIuMnMdgn3FJjrOujIGOrycYggcFjK5JMwml~bj78TTm103Uh0Dvg474UKSeXDZ9t8OQyQDXN7Hx7iZscsoAmn-4SBA4yCbEC1TtTSLSNG5qvsQ4weAJgm02I9R~s90~OtrACzSybsOpilii40GkpZjGvPsLxINj5Xkl-uDqKsCg__',
+            'https://s3-alpha-sig.figma.com/img/2fcb/d544/559e1d3d17f51640b7e705c80290a38e?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=P73hiYMoK1b9unDi3yuzswwDcGecxQyLlCcwmvc4HyQUPkdHQ1DBCiQKWZWtwBiv1348R85ATUMCZzKHV2VYKKGilcOw7AXYGTsr5zftsqu1fOWV1TwWi1Gl9bo3~qpbaBtc1ewLDCNdk931vftFXsuM83nzkXNi8u5GA0sgimkDVo5uW58UWXj~IZggWRilT~p1HZnMGdo7xAHA-6f2ieJa4OWTukoX~0eNxfSXnzMi4nIrh42p6YtVUGIzlfuvV80DMnZ6SQHg-XJx1oFExO0XfAYrAXdzrilaetl9vk2KeNGjmkdxkwacGlka8-JH8ybNT8baw2n89fHvGJomOw__',
       ),
       Recipe(
         id: 4,
@@ -46,7 +46,7 @@ class RecipeApiFake implements RecipeApi {
         cookingTime: 20,
         isFavorite: true,
         imgUrl:
-            'https://s3-alpha-sig.figma.com/img/fc80/5ac0/b22dfc924203e88c81c2fe25c83a2267?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qogB6yAwBILB6P9cox7QhqrcFZ6Adf57onxEA654rq2xmfbU3BV6iBcMKVaTOfWLSv51apom7DhBiQ3QxcJkp7vo5rcL7YluIZOuVMZh~aXGGuM5g~m0wU~wVrMim5CLBLHUmlDWyNHCYRlO7oI1ZDRmXJNMJ7JBGRfW5zWfNXYy23nwag5fJ50LoDjz1sUW7dwXJUulI42lZ2mQcXYV~nFVx03arl0-qejGcnIHaiMdfsh9yUbS99Orkwg5RuHw-qwK1RkzZQWyndHoZZHFDmE3dH6k-OhBOqfDhD9M5P9EHb2kqlMI7QhaE22lulJgpGDI5vAvnEaGFz5yByYaoQ__',
+            'https://s3-alpha-sig.figma.com/img/fc80/5ac0/b22dfc924203e88c81c2fe25c83a2267?Expires=1724025600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=FYGNYkIMl8q~rhNYY9pw~J2p6zDjMNmYbgweGbPIdt~76~y9KoE23qMlCpe9MQPAbL~ZH0mc9wHOg5cfwLsmIpquLaIRbePPC7KNElBOo1~Y3bqnWZ32rIIPVC84WBliMEVwYu33gwCRFE5cvds5uhtQym-B7f~p3-UxpBByOoVMTI6zuMCrhEF92A0FYYNoEuKNf8-hR79vintbZrCGpAiRSCcOnMd992uB59ill4OjZC1Jb-PNaSsLycc~D3uWRw2aYj~jo~JPlSxpPtkAy8ya5H9kPptvHhVdatLmYss8Us8xsOqAokHfYmep17RtBiVb2CCnE4nNs8defZZfQw__',
       ),
     ];
   }
