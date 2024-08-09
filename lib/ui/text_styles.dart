@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:food_recipe/ui/color_styles.dart';
 import 'package:food_recipe/ui/size_config.dart';
 
 abstract class TextStyles {
-  static const Color defaultFontColor = Color(0xFF484848);
+  static const Color defaultFontColor = ColorStyles.gray1;
 
   static TextStyle boldStyle(double fontSize, [Color? fontColor]) {
     return TextStyle(
